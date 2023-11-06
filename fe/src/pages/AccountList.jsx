@@ -13,9 +13,7 @@ const AccountList = () => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                Authorization:
-                    "Bearer" +
-                    JSON.stringify(window.localStorage.getItem("token")),
+                Authorization: "Bearer " + window.localStorage.getItem("token"),
             },
         })
             .then((res) => {

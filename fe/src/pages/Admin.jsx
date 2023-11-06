@@ -43,6 +43,7 @@ const Admin = () => {
             })
             .catch((err) => {
                 console.log("Error: ", err);
+                window.alert(err?.message || "Login error");
             });
     };
 
