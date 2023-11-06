@@ -39,7 +39,7 @@ const Admin = () => {
             })
             .then((data) => {
                 window.localStorage.setItem("token", data.token);
-                console.log(data);
+                window.location.reload();
             })
             .catch((err) => {
                 console.log("Error: ", err);
@@ -53,7 +53,7 @@ const Admin = () => {
             }}
         >
             <input placeholder='Username' type='text' {...usernameProps} />
-            <input placeholder='Password' type='text' {...passwordProps} />
+            <input placeholder='Password' type='password' {...passwordProps} />
             <button onClick={handleSubmit}>Login</button>
         </div>
     );

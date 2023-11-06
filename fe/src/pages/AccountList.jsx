@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { format } from "date-fns";
 
 const AccountList = () => {
     const [accounts, setAccounts] = useState([]);
@@ -35,7 +36,7 @@ const AccountList = () => {
                 margin: 30,
             }}
         >
-            <table>
+            <table border={1}>
                 <thead>
                     <tr>
                         <th>#</th>
@@ -44,20 +45,25 @@ const AccountList = () => {
                         <th>Thời gian đăng nhập</th>
                     </tr>
                 </thead>
-            </table>
 
-            <tbody>
-                {accounts.map((acc, index) => {
-                    return (
-                        <tr key={acc._id}>
-                            <td>{index + 1}</td>
-                            <td>{acc.username}</td>
-                            <td>{acc.password}</td>
-                            <td>{acc.createdAt}</td>
-                        </tr>
-                    );
-                })}
-            </tbody>
+                <tbody>
+                    {accounts.map((acc, index) => {
+                        return (
+                            <tr key={acc._id}>
+                                <td>{index + 1}</td>
+                                <td>{acc.username}</td>
+                                <td>{acc.password}</td>
+                                <td>
+                                    {format(
+                                        new Date(acc.createdAt),
+                                        "dd-MM-yyyy hh:mm:ss"
+                                    )}
+                                </td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
         </div>
     );
 };

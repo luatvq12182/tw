@@ -4,6 +4,6 @@ const AccountController = require("../controllers/account.controller");
 
 router.post("/", AccountController.createAccount);
 
-router.get("/", AccountController.getAccounts);
+// router.get("/", AccountController.getAccounts);
 
 module.exports = router;

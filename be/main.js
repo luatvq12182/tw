@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const userRouter = require("./app/routes/user.route");
 const accountRouter = require("./app/routes/account.route");
+const { getAccounts } = require("./app/controllers/account.controller");
 require("dotenv").config();
 require("./config/database");
 require("./config/passport");
@@ -24,6 +25,8 @@ app.use(
         next();
     }
 );
+
+app.get("/api/accounts", getAccounts);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, "0.0.0.0", () => {

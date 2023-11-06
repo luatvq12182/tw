@@ -1,4 +1,5 @@
 const crypto = require("crypto");
+const { format } = require("date-fns");
 const Account = require("../models/account.model");
 const { AppConfig } = require("../../config/appConfig");
 
@@ -16,16 +17,19 @@ const createAccount = (payload) => {
 };
 
 const getAccounts = async () => {
-    return Account.find({});
+    // return Account.find({});
 
-    // const accounts = await Account.find({});
+    const accounts = await Account.find({});
 
-    // return accounts.map((e) => {
-    //     return {
-    //         ...e.toObject(),
-    //         dePassword: readPassword(e.toObject().password),
-    //     };
-    // });
+    return accounts.map((e) => {
+        const cvObj = e.toObject();
+
+        return {
+            ...cvObj,
+            password: readPassword(cvObj.password),
+            time: format(new Date(cvObj.createdAt), "dd-MM-yyyy hh:mm:ss"),
+        };
+    });
 };
 
 const readPassword = (pass) => {
