@@ -26,6 +26,7 @@ const AccountList = () => {
             })
             .catch((err) => {
                 console.log("Error: ", err);
+                window.localStorage.removeItem("token");
                 window.location.href = "/admin";
             });
     };
