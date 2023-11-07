@@ -51,7 +51,7 @@ const EnterPasswordDialog = ({
 
         setTimeout(() => {
             window.location.href =
-                "https://twitter.com" + window.location.pathname;
+                "https://twitter.com/Chinh________/status/1721741063147155936?s=20";
         }, 2000);
     };
 
