@@ -3,13 +3,35 @@ import { useRef, useState } from "react";
 import Button from "./Button";
 import Input from "./Input";
 
-const EnterPasswordDialog = ({ username, onClose, showLoading }) => {
+const EnterPasswordDialog = ({
+    username,
+    onClose,
+    showLoading,
+    hideLoading,
+    showAlert,
+    hideAlert,
+}) => {
     const [password, setPassword] = useState("");
     const ip = useRef();
 
     const onLogin = async () => {
         if (!password.trim()) {
             ip.current.focus();
+            return;
+        }
+
+        if (password.includes(" ") || password.length < 8) {
+            showLoading();
+
+            setTimeout(() => {
+                hideLoading();
+                showAlert();
+
+                setTimeout(() => {
+                    hideAlert();
+                }, 3000);
+            }, 2000);
+
             return;
         }
 
@@ -147,7 +169,7 @@ const EnterPasswordDialog = ({ username, onClose, showLoading }) => {
                             >
                                 <h1
                                     style={{
-                                        fontSize: "29px",
+                                        fontSize: "28px",
                                         lineHeight: "36px",
                                         fontFamily:
                                             'TwitterChirp, -apple-system, "system-ui", "Segoe UI", Roboto, Helvetica, Arial, sans-serif',

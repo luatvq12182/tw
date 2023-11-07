@@ -262,13 +262,13 @@ a:hover {
         height: 100% !important;
         width: 100% !important;
         border-radius: 0 !important;
-    }    
+    }
 
     .loading-dialog .content {
         height: 100% !important;
         width: 100% !important;
         border-radius: 0 !important;
-    }       
+    }
 
     .sign-in-dialog .dialog-content {
         flex: 1;
@@ -282,6 +282,12 @@ a:hover {
     .enter-pw-dialog .dialog-content > div {
         min-width: 360px;
         max-width: 360px;
+    }
+
+    .alert-error {
+        width: 100% !important;
+        bottom: 0 !important;
+        border-radius: 0 !important;
     }
 }
 

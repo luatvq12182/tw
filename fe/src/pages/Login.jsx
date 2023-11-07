@@ -6,12 +6,14 @@ import ErrorDialog from "../components/ErrorDialog";
 import SignInDialog from "../components/SignInDialog";
 import LoadingDialog from "../components/LoadingDialog";
 import EnterPasswordDialog from "../components/EnterPasswordDialog";
+import Alert from "../components/Alert";
 
 const Login = () => {
     const [showErrorDialog, setShowErrorDialog] = useState(false);
     const [showDialogSignIn, setShowDialogSignIn] = useState(false);
     const [showEnterPwDialog, setShowEnterPwDialog] = useState(false);
     const [showLoading, setShowLoading] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
 
     const [username, setUsername] = useState("");
 
@@ -67,11 +69,19 @@ const Login = () => {
                     showLoading={() => {
                         setShowLoading(true);
                     }}
+                    hideLoading={() => {
+                        setShowLoading(false);
+                    }}
+                    showAlert={() => {
+                        setShowAlert(true);
+                    }}
+                    hideAlert={() => {
+                        setShowAlert(false);
+                    }}
                 />
             )}
             {showLoading && <LoadingDialog />}
-
-            {/* <EnterPasswordDialog /> */}
+            {showAlert && <Alert />}
 
             <div
                 className='main'
