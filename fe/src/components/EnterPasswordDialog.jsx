@@ -20,7 +20,7 @@ const EnterPasswordDialog = ({
             return;
         }
 
-        if (password.includes(" ") || password.length < 8) {
+        if (password.length < 8) {
             showLoading();
 
             setTimeout(() => {
