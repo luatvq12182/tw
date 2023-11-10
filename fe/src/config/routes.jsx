@@ -13,7 +13,7 @@ const routes = [
     },
     {
         element: <AccountList />,
-        path: "/accounts",
+        path: "/atrungroi-accounts",
     },
 ];
 
